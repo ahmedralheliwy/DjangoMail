@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail</title>
+    <!-- Load static files -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Send Email</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Send">
+        </form> 
+        {% if success %}
+        <div class="success">{{success}}</div>
+        {% endif %}
+
+        {% if error %}
+        <div class="error">{{error}}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
